@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ product.title }}</title>
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Container for product details */
+        .product-detail-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Product Image */
+        .product-image {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            object-fit: cover;
+        }
+
+        /* Product Title */
+        .product-title {
+            margin: 20px 0;
+            font-size: 2em;
+            color: #2c3e50;
+        }
+
+        /* Product Price */
+        .product-price {
+            font-size: 1.5em;
+            color: #e74c3c;
+            margin-bottom: 15px;
+        }
+
+        /* Product Description */
+        .product-description {
+            margin-bottom: 20px;
+            font-size: 1em;
+            color: #7f8c8d;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .action-buttons a {
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .add-to-cart-btn {
+            background-color: #3498db;
+            color: #ffffff;
+        }
+
+        .add-to-cart-btn:hover {
+            background-color: #2980b9;
+        }
+
+        .remove-from-wishlist-btn {
+            background-color: #e74c3c;
+            color: #ffffff;
+        }
+
+        .remove-from-wishlist-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="product-detail-container">
+        <img src="{{ product.image.url }}" alt="{{ product.title }}" class="product-image">
+        <h1 class="product-title">{{ product.title }}</h1>
+        <p class="product-price">Price: ${{ product.price }}</p>
+        <p class="product-description">{{ product.description }}</p>
+
+        <div class="action-buttons">
+            <a href="{% url 'catalog:add_to_cart' parent_id child_id %}" class="add-to-cart-btn">Add to Cart</a>
+            <a href="{% url 'catalog:remove_from_wishlist' parent_id child_id %}" class="remove-from-wishlist-btn">Remove from Wishlist</a>
+        </div>
+    </div>
+</body>
+</html>

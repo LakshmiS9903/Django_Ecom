@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ parent_product.name }} - Child Products</title>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ parent_product.name }}</h1>
+        <p>{{ parent_product.description }}</p>
+
+        <h2>Child Products</h2>
+        <ul>
+            {% for child in child_products %}
+                <li>
+                    <h3>{{ child.title }}</h3>
+                    {% if child.image %}
+                        <img src="{{ child.image.url }}" alt="{{ child.title }}" style="max-width: 100%; height: auto;">
+                    {% endif %}
+                    <p>Price: ${{ child.price }}</p>
+                </li>
+            {% empty %}
+                <li>No child products available.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>

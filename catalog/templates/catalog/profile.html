@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- (Your existing head content) -->
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <style>
+        /* (Your existing CSS styles) */
+        body {
+            background-color: #f8f9fa;
+        }
+        .profile-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .profile-header img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+        .btn-custom {
+            width: auto; /* Changed from 100% to auto */
+            padding: 8px 16px; /* Reduced padding */
+            margin-bottom: 10px; /* Reduced margin */
+            border: none;
+            border-radius: 5px;
+            font-size: 14px; /* Reduced font size */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 40px; /* Optional: set fixed height */
+        }
+        .btn-custom i {
+            margin-right: 6px;
+            font-size: 16px; /* Reduced icon size */
+        }
+        .btn-wishlist {
+            background-color: #ff6f61;
+            color: #ffffff;
+        }
+        .btn-viewcart {
+            background-color: #4caf50;
+            color: #ffffff;
+        }
+        .btn-custom:hover {
+            opacity: 0.9;
+            cursor: pointer;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 576px) {
+            .btn-custom {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+            .btn-custom i {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div class="profile-container">
+            <!-- Profile Header -->
+            <div class="profile-header">
+                <img src="https://via.placeholder.com/100" alt="User Avatar">
+                <h2>Welcome, <span id="username">Lakshmi</span>!</h2>
+            </div>
+            
+            <!-- Action Buttons -->
+            <div class="d-flex flex-column align-items-center">
+                <!-- Using anchor tags for better accessibility and SEO -->
+                <a href="{% url 'catalog:view_wishlist' %}" class="btn btn-wishlist btn-custom">
+                    <i class="fa-solid fa-heart"></i> Wish List
+                </a>
+                <a href="{% url 'catalog:view_add_to_cart' %}" class="btn btn-viewcart btn-custom">
+                    <i class="fa-solid fa-cart-shopping"></i> View Cart
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+

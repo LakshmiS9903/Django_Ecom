@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buy Now - {{ child_product.name }}</title>
+    <!-- Embedded CSS for Styling -->
+    <style>
+        /* Reset some default styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            padding: 20px;
+        }
+
+        /* Header */
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #2c3e50;
+            font-size: 2.2em;
+        }
+
+        /* Buy Now Container */
+        .buy-now-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Product Image */
+        .product-image {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* Product Details */
+        .product-details {
+            padding: 15px;
+            border-top: 1px solid #e8e8e8;
+        }
+
+        .product-details h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #34495e;
+        }
+
+        .product-details p {
+            margin-bottom: 8px;
+            font-size: 1em;
+            color: #7f8c8d;
+        }
+
+        .product-details .price {
+            font-size: 1.3em;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 20px;
+        }
+
+        /* Action Buttons */
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .confirm-btn, .cancel-btn {
+            text-decoration: none;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            font-weight: bold;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        .confirm-btn {
+            background-color: #2ecc71;
+            color: #ffffff;
+        }
+
+        .confirm-btn:hover {
+            background-color: #27ae60;
+        }
+
+        .cancel-btn {
+            background-color: #e74c3c;
+            color: #ffffff;
+        }
+
+        .cancel-btn:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="buy-now-container">
+        <h1>Buy Now: {{ child_product.name }}</h1>
+        <img src="{{ child_product.image.url }}" alt="{{ child_product.name }}" class="product-image">
+        <div class="product-details">
+            <h2>{{ child_product.name }}</h2>
+            <p>Description: {{ child_product.description }}</p>
+            <p class="price">Price: ${{ child_product.price }}</p>
+            <p>Quantity: 
+                <input type="number" value="1" min="1" max="{{ child_product.stock }}" id="quantity">
+            </p>
+            <div class="action-buttons">
+                <a href="{% url 'catalog:confirm_purchase' parent_id=child_product.parent.id child_id=child_product.id %}" class="confirm-btn">Confirm Purchase</a>
+                <a href="{% url 'catalog:categories' %}" class="cancel-btn">Cancel</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

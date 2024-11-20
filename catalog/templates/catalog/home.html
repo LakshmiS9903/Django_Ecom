@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Product Catalog</title>
+    <style>
+        /* General body styling */
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('https://i.pinimg.com/564x/a3/da/13/a3da13897d68cc79e5ee7bce798a62ec.jpg'); /* Background image */
+            background-size: cover; /* Cover the entire screen */
+            background-position: center; /* Center the image */
+            background-repeat: no-repeat; /* Don't repeat the image */
+            margin: 0;
+            padding: 0;
+            width: 100%; /* Ensure full screen width */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            min-height: 100vh;
+            color: white; /* White text color for contrast */
+        }
+
+        /* Navigation bar styling */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: lightgrey; /* Light grey background */
+            width: 100%; /* Full width */
+            padding: 10px 20px;
+            position: absolute; /* Position fixed at top */
+            top: 0; /* At the top */
+            left: 0; /* Left aligned */
+            box-sizing: border-box; /* Ensure padding is included in width */
+        }
+
+        .navbar h1 {
+            margin: 0;
+            font-size: 28px; /* Increased font size */
+            color: royalblue; /* Title color */
+            text-transform: uppercase; /* Make title uppercase */
+        }
+
+        /* Plain text navigation links */
+        .navbar div {
+            display: flex;
+            justify-content: flex-end; /* Align links to the left side of the div */
+            margin-right: 20px; /* Slightly push towards the left */
+            width: 50%; /* Set width to fit full screen */
+        }
+
+        .nav-button {
+            color: #000; /* Black text */
+            text-decoration: none;
+            font-weight: bold;
+            margin-left: 15px; /* Space between links */
+            font-size: 14px; /* Smaller font size */
+        }
+
+        .nav-button:hover {
+            text-decoration: underline; /* Underline on hover */
+        }
+
+        /* Product Catalog Title Styling */
+        .product-title {
+            font-size: 36px; /* Increased size for product catalog title */
+            text-transform: uppercase; /* Make title uppercase */
+            text-align: center; /* Center align */
+            margin: 80px 0 10px; /* Space for navbar and tagline */
+            color: black; /* Black color for title */
+        }
+
+        /* Tagline styling (no background card, only background for text) */
+        .tagline {
+            text-align: center; /* Center align tagline */
+            font-size: 18px;
+            padding: 10px;
+            color: white; /* White text for readability */
+            margin-bottom: 20px; /* Space below tagline */
+            background-color: rgba(0, 0, 0, 0.5); /* Background only around text */
+            display: inline-block; /* Background only around text */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        /* Container for product list */
+        .product-container {
+            max-width: 80%;
+            padding: 20px;
+            margin-top: 30px; /* Adjust margin for better spacing */
+        }
+
+        /* Flex container for product list */
+        .product-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            list-style: none;
+            padding: 0;
+        }
+
+        /* Styling each product item */
+        .product-item {
+            flex: 1 1 30%; /* Grow and shrink flex items, limit to 30% */
+            max-width: 30%;
+            margin: 15px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+            background-color: #fafafa;
+            position: relative;
+        }
+
+        /* Styling the image */
+        .product-item img {
+            width: 100%;
+            max-width: 150px;
+            border-radius: 8px;
+            box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Delete button styling */
+        .delete-button {
+            background-color: #dc3545;
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 50%;
+            font-size: 12px;
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%; /* Center horizontally */
+            transform: translate(-50%, -50%); /* Center fully */
+            font-weight: bold;
+        }
+
+        .delete-button:hover {
+            background-color: #c82333;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation bar -->
+    <div class="navbar">
+        <h1>Product Catalog</h1>
+        <div>
+            <a href="{% url 'catalog:profile' %}" class="nav-button">Profile</a>
+            <a href="{% url 'login' %}" class="nav-button">Login</a>
+            <a href="{% url 'register' %}" class="nav-button">Register</a>
+            <a href="{% url 'catalog:categories' %}" class="nav-button">Categories</a> <!-- Updated button text -->
+            <a href="#" class="nav-button">Logout</a>
+        </div>
+    </div>
+
+    <div class="product-container">
+        <h1 class="product-title">Product Catalog</h1> <!-- Centered title in black -->
+        <div class="tagline">Where you get your necessary products</div> <!-- Tagline below title -->
+    </div>
+
+</body>
+</html>

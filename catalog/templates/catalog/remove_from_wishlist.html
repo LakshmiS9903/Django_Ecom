@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Remove from Wishlist</title>
+    <style>
+        body {
+            font-family: 'Helvetica', 'Arial', sans-serif;
+            background-color: #f0f4f8;
+            color: #333;
+            padding: 20px;
+        }
+        .confirmation {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        .confirmation h1 {
+            color: #e74c3c;
+        }
+        .confirmation p {
+            margin: 15px 0;
+            font-size: 1.1em;
+        }
+        .confirmation button {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        .confirmation button:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
+<body>
+    <div class="confirmation">
+        <h1>Remove Item</h1>
+        <p>Are you sure you want to remove <strong>{{ item.child_product.title }}</strong> from your wishlist?</p>
+        <form method="POST">
+            {% csrf_token %}
+            <button type="submit">Yes, Remove</button>
+        </form>
+        <a href="{% url 'catalog:wishlist' %}">Cancel</a>
+    </div>
+</body>
+</html>
